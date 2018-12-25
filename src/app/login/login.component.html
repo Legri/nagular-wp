@@ -1,0 +1,19 @@
+
+
+
+  <div class="imgcontainer">
+    <img src="../../assets/images.jpg" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label ><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" [(ngModel)]="username" required> 
+
+    <label ><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="password"  required>
+        
+    <button (click)="onlogin(username,password)">Login</button>
+    
+  </div>
+
+
