@@ -14,6 +14,9 @@ import { FooterComponent } from './pages/template/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { GuardpagesGuard } from './guardpages.guard';
+import { GetcontentserviceService} from '../app/services/getcontentservice.service'
+
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 
 const appRoutes: Routes = [
@@ -45,6 +48,7 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
+    Ng4LoadingSpinnerModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -52,7 +56,7 @@ const appRoutes: Routes = [
     
     
   ],
-  providers: [GuardpagesGuard],
+  providers: [GuardpagesGuard,GetcontentserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
