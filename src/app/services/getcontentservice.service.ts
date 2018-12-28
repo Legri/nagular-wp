@@ -8,9 +8,12 @@ export class GetcontentserviceService {
 
   constructor(private http: HttpClient) { }
 
-  getcontent(){
-     return this.http.get('https://kusmirchuk.top/wp-json/wp/v2/pages?slug=test-page');
-    
+  getcontent(id){
+     return this.http.get('https://kusmirchuk.top/wp-json/wp/v2/pages/'+id);
+  }
 
+
+  getcontentbypost(){
+     return this.http.get('https://kusmirchuk.top/wp-json/wp/v2/posts/');
   }
 }

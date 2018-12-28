@@ -10,21 +10,33 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class AboutComponent implements OnInit {
   title: string;
   container : any;
+  title_post:string;
+  title_image :string;
+  data :any;
 
   constructor(private serv : GetcontentserviceService, private spinnerService: Ng4LoadingSpinnerService) { 
    
   }
 
   ngOnInit() {
-  this.spinnerService.show();
-   this.serv.getcontent().subscribe((data) => {data;
-   this.title = data[0]['title']['rendered'];
-   this.container=data[0]['content']['rendered'];
+   
+   this.serv.getcontent('74').subscribe((data) => {data;
+    console.log(data);
+   this.title = data['title']['rendered'];
+   this.container=data['content']['rendered'];
+   this.title_post=data['acf']['title_post'];
+   this.title_image=data['acf']['title_image'];
+
+   this.data = data;
+   console.log(data);
+   this.spinnerService.hide();
+   console.log(data['content']['rendered']);
     });
+    
   ;
 
-    console.log(this.container);
-   // this.spinnerService.hide();
+    
+   
   }
 
 }

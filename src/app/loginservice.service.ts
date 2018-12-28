@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 import { map } from 'rxjs/operators';
 
@@ -8,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class LoginserviceService {
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient,private location: Location) { }
 
   login(email,password){
   //  var body = "username=" + email + "&password=" +password ;
@@ -21,6 +22,7 @@ export class LoginserviceService {
       if (data['token']) {
         localStorage.setItem('token',data['token']);
         console.log(data['token']);
+        this.location.back();
       }
       else{
         console.log('data');
