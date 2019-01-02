@@ -9,11 +9,11 @@ export class GetcontentserviceService {
   constructor(private http: HttpClient) { }
 
   getcontent(id){
-     return this.http.get('https://kusmirchuk.top/wp-json/wp/v2/pages/'+id);
+     return this.http.get('https://restapi.kusmirchuk.top/wp-json/wp/v2/pages/'+id);
   }
 
 
   getcontentbypost(){
-     return this.http.get('https://kusmirchuk.top/wp-json/wp/v2/posts/');
+     return this.http.get('https://restapi.kusmirchuk.top/wp-json/wp/v2/posts/');
   }
 }

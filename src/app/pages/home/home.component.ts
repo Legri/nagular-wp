@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private serv : GetcontentserviceService, private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
+
     // this.spinnerService.show();
    this.serv.getcontent(84).subscribe((data) => {data;
     this.title = data['title']['rendered'];
