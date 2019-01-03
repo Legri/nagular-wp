@@ -1,11 +1,24 @@
 
+<div class="container">
+    <div  *ngIf="message2=='not login'">
+      <div class="alert alert-danger" role="alert">
+        <strong>Oh snap!</strong> You have entered an invalid username or password.
+      </div>
+    </div>
+
+    <div  *ngIf="message2=='is login'">
+        <div class="alert  alert-success" role="alert">
+          <strong>You are login successfully!</strong> 
+        </div>
+      </div>
+
 <div *ngIf="str=='logOut'">
 
   <div class="imgcontainer">
     <img src="../../assets/images.jpg" alt="Avatar" class="avatar">
   </div>
 
-  <div class="container">
+  
     <label ><b>Username</b></label>
     <input type="text" placeholder="Enter Username" [(ngModel)]="username" required> 
 
@@ -15,8 +28,8 @@
     <button (click)="onlogin(username,password)">Login</button>
     
   </div>
-</div>
+
 <div  *ngIf="str=='login'">
-  <button (click)="onlogout()">LogOut</button>
+  <button type="button" class="btn btn-danger" (click)="onlogout()">LogOut</button>
 </div>
-{{str}}
+</div>

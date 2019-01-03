@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/internal/Observable';
+import { MessagesService } from '../app/services/messages.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,36 +13,29 @@ import { Observable } from 'rxjs/internal/Observable';
 export class LoginserviceService {
 
   private subject = new Subject<any>();
-  constructor(public http: HttpClient,private location: Location) { }
+  constructor(public http: HttpClient,private location: Location,private mess:MessagesService) { }
 
   login(email,password){
-  //  var body = "username=" + email + "&password=" +password ;
+
     let formData:FormData = new FormData();  
     formData.append('username',email);  
     formData.append('password',password);  
-  //console.log (credentials)
     return this.http.post('https://restapi.kusmirchuk.top/wp-json/jwt-auth/v1/token', formData).subscribe((data) => {
-      //console.log(data['token']);
       if (data['token']) {
-        localStorage.setItem('token',data['token']);
- 
-        this.subject.next('login');
-
-       // this.location.back();
-        
+       localStorage.setItem('token',data['token']);
+       this.subject.next('login');
+       this.mess.set_message('is login');
       }
-      else{
-        //console.log('data');
-        
-      }
-      
-    });
+    },
+    error => {
+      this.mess.set_message('not login');
+  });
   }
 
   logout(): Observable<any> {
     localStorage.removeItem('token');
     this.subject.next('logOut');
-
+    this.mess.set_message('logOut');
     return this.subject.asObservable();
 }
  
