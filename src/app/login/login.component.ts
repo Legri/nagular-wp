@@ -11,9 +11,10 @@ export class LoginComponent implements OnInit {
   title:any;
   username:any;
   password:any;
-  str:any;
-  isLoggedIn = false;
+  str:string;
   constructor(private auth: LoginserviceService) {
+    this.auth.get_token().subscribe(message => { this.str = message; 
+    });
    }
 
   ngOnInit() {

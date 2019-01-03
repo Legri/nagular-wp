@@ -1,5 +1,5 @@
 
-<div>
+<div *ngIf="str=='logOut'">
 
   <div class="imgcontainer">
     <img src="../../assets/images.jpg" alt="Avatar" class="avatar">
@@ -16,7 +16,7 @@
     
   </div>
 </div>
-<div>
+<div  *ngIf="str=='login'">
   <button (click)="onlogout()">LogOut</button>
 </div>
-
+{{str}}

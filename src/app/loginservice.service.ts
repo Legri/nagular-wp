@@ -27,7 +27,7 @@ export class LoginserviceService {
  
         this.subject.next('login');
 
-        this.location.back();
+       // this.location.back();
         
       }
       else{
